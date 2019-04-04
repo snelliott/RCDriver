@@ -7,24 +7,22 @@
 
 Sarah N. Elliott, Murat Keceli, and Stephen J. Klippenstein
 
-RCDriver is a set of python modules that when given a short input file (that requests a SMILES molecule name and levels of theory) will perform hindered rotor scans and transition state searches.  Specifically it sets up and performs EStokTP computations and subsequently parses the resulting output files to compute 0 K heats of formation and updated anharmonic constants.  Given the option, RCDriver will use those computations to generate mess input and can run the mess partition 
-function, thermp, pac99 executables to generate 298 K heats of formation, heat capacities, and NASA polynomials. 
+RCDriver is a set of python modules that when given a short input file (that requests SMILES molecule name(s) and levels of theory) will carry out the computations necessary to achieve thermochemical and kinetic data.  This includes: Monte Carlo optimizations, higher level optimizations and energy computations, transition state searches, hindered rotor scans, anharmonic treatment, and more -- many of these rely on calls to EStokTP and subsequent parsing. Given the option, RCDriver will use those computations to generate mess input and can run the mess partition function, thermp, pac99 executables to generate temperature dependent heats of formation, heat capacities, NASA polynomials, rate constants, and Arrhenius plots. 
 
 
 
 ## (1) GETTING TORSSCAN
 
-Users can clone RCDriver from https://github.com/snelliott/RCDriver or simply use its location at  /home/elliott/Packages/RCDriver on Blues.  
+Users can clone RCDriver from https://github.com/PACChem/RCDriver 
+>> git clone https://github.com/PACChem/RCDriver.git
+or install from the anaconda website 
+>> conda install -c pacchem rcdriver
+and build the environment
+>> conda env create -f environment.yml 
+>> conda activate rcd-env
 
 
-## (2) DEPENDENCIES
-
-RCDriver relies on EStokTP developed by Carlo Cavallotti, Matteo Pelucchi, and Stephen Klippenstein. RCDriver uses the iotools (input/output tools), obtools (openbabel tools), and patools (parsing tools), built by Murat Keceli and Sarah Elliott that can be cloned from  https://github.com/keceli/QTC or https://github.com/PACChem/QTC. Obtools, in turn, needs OpenBabel with pybel python bindings.  You will need to either install that by following these instructions https://pypi.python.org/pypi/openbabel.
-The zmat builder uses x2z by Yuri Georgievski.  This can be cloned from https://github.com/PACChem/x2z. 
-The thermochemistry computations in RCDriver uses heatform, anharm, and tctools also on the QTC github, pac99 by Bonnie Mcbride, thermp by Stephen Klippenstein, and mess by Yuri Georgievski. The locations of these files should be in the user's path or specified in a configfile (run rcdriver with -c <configfile>)
-
-
-## (3) INPUT / OUTPUT
+## (2) INPUT / OUTPUT
 
 The main executable is rc_driver.py.  It will need an inputfile specified with the -i flag (an example is located at /home/elliott/Packages/RCDriver/input.dat).  If no inputfile is specified with the (e.g., the command is not  rc_driver.py myinputfile.txt)  the code will automatically look for a file named input.dat. The input file separates keywords from their input values with a colon.  The keywords are case sensitive but the values are not.  Lines can be commented out with a \#.  The output will print to terminal unless an output file is specified with a -o flag.
 
