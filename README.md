@@ -13,13 +13,19 @@ RCDriver is a set of python modules that when given a short input file (that req
 
 ## (1) GETTING TORSSCAN
 
-Users can clone RCDriver from https://github.com/PACChem/RCDriver 
->> git clone https://github.com/PACChem/RCDriver.git
+Users can clone RCDriver from https://github.com/PACChem/RCDriver  
+
+`>>git clone https://github.com/PACChem/RCDriver.git`
+
 or install from the anaconda website 
->> conda install -c pacchem rcdriver
+
+`>> conda install -c pacchem rcdriver`
+
 and build the environment
->> conda env create -f environment.yml 
->> conda activate rcd-env
+
+`>> conda env create -f environment.yml`
+
+`>> conda activate rcd-env`
 
 
 ## (2) INPUT / OUTPUT
